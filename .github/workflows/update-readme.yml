@@ -1,69 +1,20 @@
-name: Update Wakatime Stats in README
+name: Waka Readme
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Le workflow sera exécuté tous les jours à minuit
-  push:
-    branches:
-      - main  # Le workflow se déclenche lorsqu'il y a un push sur la branche principale
-
+    # Runs at 12am IST
+    - cron: '00 00 * * *'
+  workflow_dispatch:
 jobs:
   update-readme:
-    runs-on: ubuntu-latest  
-
+    name: Update Readme with Metrics
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: anmol098/waka-readme-stats@master
         with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: |
-          pip install requests  
-
-      - name: Fetch Wakatime stats and update README
-        run: |
-          import requests
-          import os
-
-          # Clé API Wakatime
-          api_key = os.getenv('WAKATIME_API_KEY')  
-          user_id = '544b01f8-601b-452f-ac06-efb631ed5e48'  # Remplacez par votre user_id Wakatime
-
-          # Récupérer les stats de Wakatime
-          response = requests.get(f'https://wakatime.com/api/v1/users/{user_id}/stats/last_7_days', headers={
-              'Authorization': f'Bearer {api_key}'
-          })
-
-          if response.status_code == 200:
-              data = response.json()
-              languages = data['data']['languages']
-
-              # Construire un tableau Markdown avec les statistiques
-              stats_table = "| Langage | Temps | \n| --- | --- | \n"
-              for language in languages:
-                  stats_table += f"| {language['name']} | {language['text']} |\n"
-
-              # Charger le README.md
-              with open("README.md", "r") as file:
-                  readme_content = file.read()
-
-              # Mettre à jour les statistiques dans le README.md
-              updated_readme = readme_content.replace("<!-- WAKATIME STATS -->", stats_table)
-
-              # Sauvegarder le fichier README mis à jour
-              with open("README.md", "w") as file:
-                  file.write(updated_readme)
-
-          else:
-              print("Erreur lors de la récupération des données Wakatime")
-
-      - name: Commit and push changes to README
-        uses: EndBug/add-and-commit@v7
-        with:
-          message: 'Update Wakatime stats in README'
-          author_name: 'github-actions'
-          author_email: 'github-actions@users.noreply.github.com'
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          COMMIT_MESSAGE: 'Update stats by Dev Metrics'
+          SHOW_PROFILE_VIEWS: 'False'
+          LOCALE: 'fr'
+          SHOW_LOC_CHART: 'False'

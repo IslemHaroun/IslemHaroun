@@ -3,8 +3,8 @@
 
 ## Mes statistiques de développement
 
-<a href="https://github-readme-stats.vercel.app/api/top-langs/?username=OSoufian&layout=compact">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=OSoufian&layout=compact"/>
+<a href="https://github-readme-stats.vercel.app/api/top-langs/?username=IslemHaroun&layout=compact">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=IslemHaroun&layout=compact"/>
 </a>
 <!-- WAKATIME STATS -->
 

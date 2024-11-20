@@ -9,7 +9,7 @@ on:
 
 jobs:
   update-readme:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
 
     steps:
       - name: Checkout the repository
@@ -22,14 +22,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests
+          pip install requests  # Installer uniquement les dépendances nécessaires pour récupérer les stats de Wakatime
 
       - name: Fetch Wakatime stats and update README
         run: |
           import requests
           import os
 
-          api_key = os.getenv('WAKATIME_API_KEY')
+          # Clé API Wakatime
+          api_key = os.getenv('WAKATIME_API_KEY')  # Assurez-vous que votre clé API est stockée dans les secrets GitHub
           user_id = '544b01f8-601b-452f-ac06-efb631ed5e48'  # Remplacez par votre user_id Wakatime
 
           # Récupérer les stats de Wakatime

@@ -1,5 +1,10 @@
 ## Hi there 👋
 
+
+## Mes statistiques de développement
+
+<!-- WAKATIME STATS -->
+
 <!--
 **IslemHaroun/IslemHaroun** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 

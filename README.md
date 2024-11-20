@@ -1,7 +1,8 @@
 ## Hi there 👋
 
 
-## Mes statistiques de développement
+## My development statistics
+
 
 <a href="https://github-readme-stats.vercel.app/api/top-langs/?username=IslemHaroun&layout=compact">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=IslemHaroun&layout=compact"/>

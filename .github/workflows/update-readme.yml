@@ -2,10 +2,10 @@ name: Update Wakatime Stats in README
 
 on:
   schedule:
-    - cron: '0 0 * * *'  
+    - cron: '0 0 * * *'  # Le workflow sera exécuté tous les jours à minuit
   push:
     branches:
-      - main  
+      - main  # Le workflow se déclenche lorsqu'il y a un push sur la branche principale
 
 jobs:
   update-readme:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests  # Installer uniquement les dépendances nécessaires pour récupérer les stats de Wakatime
+          pip install requests  
 
       - name: Fetch Wakatime stats and update README
         run: |
@@ -30,7 +30,7 @@ jobs:
           import os
 
           # Clé API Wakatime
-          api_key = os.getenv('WAKATIME_API_KEY')  # Assurez-vous que votre clé API est stockée dans les secrets GitHub
+          api_key = os.getenv('WAKATIME_API_KEY')  
           user_id = '544b01f8-601b-452f-ac06-efb631ed5e48'  # Remplacez par votre user_id Wakatime
 
           # Récupérer les stats de Wakatime
